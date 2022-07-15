@@ -19,8 +19,8 @@ import (
 
 func main() {
 
-	var secretNum []int         //secret number of computer
-	secretNumText := []string{} //string version of
+	var secretNumber []int         //secret number of computer
+	secretNumberText := []string{} //string version of
 
 	var prediction string
 
@@ -33,9 +33,9 @@ func main() {
 	attempts := 0   // to count attempts
 
 	if digitArray[0] == 0 {
-		secretNum = digitArray[1:5]
+		secretNumber = digitArray[1:5]
 	} else {
-		secretNum = digitArray[0:4]
+		secretNumber = digitArray[0:4]
 	}
 	fmt.Println("Welcome to the Number Guessing Game!!! ~(˘▾˘~)")
 	fmt.Println("You need to predict my 4-digits Secret Number !")
@@ -48,16 +48,16 @@ func main() {
 
 	// Create a string slice using strconv.Itoa.
 	// ... Append strings to it.
-	for i := range secretNum {
-		number := secretNum[i]
+	for i := range secretNumber {
+		number := secretNumber[i]
 		text := strconv.Itoa(number)
-		secretNumText = append(secretNumText, text)
+		secretNumberText = append(secretNumberText, text)
 	}
 
 	// Join our string slice.
-	result := strings.Join(secretNumText, "")
+	result := strings.Join(secretNumberText, "")
 
-	//while rightPlace is not 4 repeat
+	//while rightPlace is not 4, repeat
 	for rightPlace < 4 {
 		rightPlace = 0 //to reset counts for each prediction try
 		wrongPlace = 0
@@ -73,10 +73,10 @@ func main() {
 		}
 		//Compare arrays
 		for m := range predArray {
-			for n := range secretNum {
-				if m == n && secretNum[n] == predArray[m] {
+			for n := range secretNumber {
+				if m == n && secretNumber[n] == predArray[m] {
 					rightPlace++
-				} else if secretNum[n] == predArray[m] {
+				} else if secretNumber[n] == predArray[m] {
 					wrongPlace++
 				}
 			}

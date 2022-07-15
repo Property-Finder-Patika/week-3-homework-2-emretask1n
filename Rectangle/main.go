@@ -10,46 +10,44 @@ import (
 //Create another function to create an instance of rectangle struct and return it. But that function would be able to return an error in case of passing invalid arguments such as negative length or height.
 //Choose one of strategies mentioned i the text book and exemplified in error.go of ch 05 in example project.
 
-//Struct of rectangle
+// Rectangle structure
 type Rectangle struct {
 	height int
-	len    int
+	length int
 }
 
 //Function to make a proper Rectangle
-func makeRec(len, heig int) (Rectangle, error) {
+func makeRec(length, height int) (Rectangle, error) {
 
-	rect1 := Rectangle{
-		height: heig,
-		len:    len,
+	rectangle1 := Rectangle{
+		height: height,
+		length: length,
 	}
 
-	if heig <= 0 || len <= 0 {
+	if height <= 0 || length <= 0 {
 		err := errors.New("Negative values are not available!")
-		return rect1, err
+		return rectangle1, err
 	}
 
-	return rect1, nil
+	return rectangle1, nil
 
 }
 
 //Area of Rectangle
 func Area(rectangle Rectangle) int {
-	return rectangle.len * rectangle.height
+	return rectangle.length * rectangle.height
 }
 
 //Circumference of Rectangle
 func Circumference(rectangle Rectangle) int {
-	return 2 * (rectangle.len + rectangle.height)
+	return 2 * (rectangle.length + rectangle.height)
 }
 
 func main() {
-	//Blank identifier to ignore err
-	rect1, _ := makeRec(10, 8)
+	//Blank identifier to ignore error
+	rectangle, _ := makeRec(10, 8)
 
-	//Area calculation
-	fmt.Println(Area(rect1))
+	fmt.Println(Area(rectangle))
 
-	//Circumference
-	fmt.Println(Circumference(rect1))
+	fmt.Println(Circumference(rectangle))
 }
